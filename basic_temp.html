@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+   <div><!--모든 컴포넌트는 최상위 하나를 가져야 한다.-->
+    <button>여기는 버튼이예요!!</button>
+    <my-global-component>    <my-local-component>로컬컴포넌트</my-local-component>제1전역컴포넌트</my-global-component><!--글로벌 컴포넌트가 템플릿이 없으면 나오고 있으면 템플릿만 나온다. -->
+    <my-local-component>로컬컴포넌트</my-local-component><!--렌더나 템플릿속성으로 표시한다.-->
+   </div>
+  </div>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+    //application isntance
+    var app = Vue.createApp({
+      name : "App",
+      data() { 
+        return {}
+      },
+      //지역 컴포넌트 등록 
+      components: {
+        "my-local-component" : {
+          name : "MyLocalComponent",
+          data() { 
+            return {}
+          },
+          template : "<div>여기는 local이예요!!</div>"
+        }
+      }
+    })
+    //전역 component 등록 
+    app.component("my-global-component", {  //첫글자 대문자 두번째 대문자 파스칼(한단어로 표현은 지양하고 두단어이상 컴포넌트이름) : MyGlobal: html 기본노테이션은 케밥이다. 
+      name: "my-global-component", 
+      data() { 
+        return {
+          message: "글로벌이예요!"
+        }
+      },
+      template: "<div>전역 컴포넌트예요! : {{message}} </div>"    //사용될때 화면에 렌더링된다. (html)
+    }) //CamelCase,Pascal Case, Snake Case, --는 케밥케이스 
+    //root component(instance)
+    var vm = app.mount("#app")
+  </script>
+</body>
+</html>
