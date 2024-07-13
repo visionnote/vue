@@ -7,6 +7,8 @@
 </head>
 <body>
   <div id="app">
+   <!--<child-component v-on:myevent="myFunc"></child-component> -->
+   
    <child-component v-on:myevent="myFunc"></child-component>
   </div>
 
@@ -24,7 +26,8 @@
         name: "ChildComponent",
         methods : { 
           showLog() { 
-            alert("버튼 클릭클릭!!");
+           // alert("버튼 클릭클릭!!");
+            console.log("버튼 클릭클릭!!");
           }
         },
         template : "<button v-on:click='showLog'>클릭클릭!!</button>" //v-on 이벤트를 기다린다. 
