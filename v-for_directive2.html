@@ -6,38 +6,24 @@
   <title>Document</title>
 </head>
 <body>
+  
   <div id="app">
-    <div>
-     <table border="1">
+    <table border="1">
       <thead>
         <tr>
-          <th>순번</th>
           <th>학번</th>
           <th>이름</th>
           <th>학과</th>
         </tr>
       </thead>
       <tbody>
-        <!--<tr v-for="(student, index) in students">-->
-        <!--v-for="student in students"-->
-        <tr v-for="(student, index) in students" :key="student.no">
-        
-          <td>{{index}}</td>
-          <td>{{student.no}}</td>
-          <td>{{student.name}}</td>
-          <td>{{student.dept}}</td>
+        <tr v-for="student in students" :key="student.no">
+          <td>{{ student.no }}</td>          
+          <td>{{ student.name }}</td>          
+          <td>{{ student.dept }}</td>          
         </tr>
-        
-        <tr v-for="(student, index) in students" :key="student.no">
-          <td>{{index}}</td>
-          <td>{{student.no}}</td>
-          <td>{{student.name}}</td>
-          <td>{{student.dept}}</td>
-        </tr>
-       
       </tbody>
-     </table>
-    </div>
+    </table>
   </div>
 
   <script src="https://unpkg.com/vue"></script>
@@ -47,17 +33,18 @@
       data() {
         return {
           students: [{
-            no: 1000, 
+            no: 1000,
             name: "홍길동",
-            dept: "철학관"
+            dept: "철학과"
           },{
-            no: 2000, 
+            no: 2000,
             name: "신사임당",
-            dept: "국어국문학과",
+            dept: "국어국문학과"
           },{
-            no: 3000, 
+            no: 3000,
             name: "강감찬",
             dept: "사학과"
+
           }]
         }
       }
