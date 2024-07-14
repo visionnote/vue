@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"> 
+    <!--<input type="text" v-bind:value="초기값을 넣을 수 있어요!">-->
+    <input type="text" v-bind:value="msg">
+    <input type="text" :value="msg"> <!--v-bind 생략가능하다 -->
+    <br><br>
+    <img v-bind:src="img_path">
+    <child-component v-bind:myData="message"></child-component>
+  </div>
+<!--props: 나의 부모 컴포넌트로부터 데이터를 받아들이겠다. 는 의미--> 
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+   var vm = Vue.createApp({
+    name : "App",
+    data() { 
+      return { 
+        msg : "소리없는 아우성!!",
+        message : "부모가 자식에게 전달해요!", 
+        img_path: "https://www.theguru.co.kr/data/photos/20230521/art_16851952276686_667a8d.png"
+      }
+    },
+    components : {
+      "child-component" : {
+        name: "ChildComponent",
+        //props: [mydata],  
+        props: {
+          mydata : String
+        },
+        template : "<div>전달받은 데이터 : {{mydata}} </div>"
+      }
+    }
+   }).mount("#app")
+  </script>
+</body>
+</html>

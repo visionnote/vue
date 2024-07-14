@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"> <!-- root component 사용법은 다른 컴포넌트와 조금 다르다. -->
+    <!-- mustache syntax를 이용해서 component가 가지고 있는 데이터를 출력할 수 있어요! {{}} 이런 기법을 interpolation(보간법)리로고 합니다. -->
+   <h1>msg의 값은: {{ msg }}</h1> <!--더 많이 사용, 자유롭다-->
+   <h1 v-text="msg"></h1>
+   <h1 v-text="message"></h1>
+   <h1 v-html="message"></h1>
+   <h1 v-bind="message"></h1>
+  </div>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+   var vm = Vue.createApp({
+    name : "App",
+    data() { 
+      return { 
+        msg : "안녕하세요!",
+        message : "<i>문자를 기울여요!!</i>"
+      }
+    }
+   }).mount("#app")
+  </script>
+</body>
+</html>

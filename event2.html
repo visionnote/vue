@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+   <child-component v-on:show-log="printText"></child-component>  <!--printText를 찾아서 실행시켜라하고 지정함 -->
+  </div>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+    var vm = Vue.createApp({
+      name : "App",
+      data() {
+        return {
+          message: "소리없는 아우성~"
+        }
+      },
+      methods: { //props 는 반응성으로 변경되면 계속 내려준다. (상위컴포넌트의 역할)
+        printText(...args) {  //이벤트발생으로 전달한 메소드가 전달한 데이터 매개변수로 전달됨 ...args 는 몇개가 전달되던 배열로 받겠다는 의미이다. 
+          console.log("여기는 Root의 handler예요") //이벤트 처리함수를 총칭해서 handler라고 부른다. 
+          console.log("첫번째 전달된 데이터:"+args[0])
+          console.log("두번째 전달된 데이터:"+args[1])
+          console.log("두번째 전달된 데이터:"+args[2])
+
+        }
+      },
+      components : {
+        "child-component" : {
+          name : "ChildComponent", //Pascal Case 2단어 이상 붙여서 만드는 것이 권장이름임 
+          methods: { 
+            showLog() { 
+              console.log("버튼이 눌렸어요!");
+              //사용자 정의 이벤트를 발생시킬꺼예요! 
+              this.$emit('show-log',100,"안녕하세요!") //child-component가 프로그램적으로 특정 이벤트를 발생시킨다. 이벤트발생시키는 이름은 show-log이고, 이벤트에 대한 데이터는 100이다.  사용자 정의 이벤트는 데이터까지 전달하며 발생된 이벤트는 감지하여 처리는 부모컴포넌트가 한다. 
+            }
+          },
+          template: "<button v-on:click='showLog'>클릭클릭!!</button>" //showLog는 함수를 지정하는 것이다. 찾아서 실행하라는 의미임
+        }
+      }
+    }).mount("#app")
+
+  </script>
+   
+  </script>
+</body>
+</html>
