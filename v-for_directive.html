@@ -18,10 +18,19 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1000</td>
-          <td>홍길동</td>
-          <td>철학과</td>
+        <!--<tr v-for="(student, index) in students">-->
+        <!--v-for="student in students"-->
+        <tr v-for="(student, index) in students" :key="student.no"></tr>
+          <td>{{index}}</td>
+          <td>{{student.no}}</td>
+          <td>{{student.name}}</td>
+          <td>{{student.dept}}</td>
+        </tr>
+        <tr v-for="student in students">
+          <td>{{index}}</td>
+          <td>{{student.no}}</td>
+          <td>{{student.name}}</td>
+          <td>{{student.dept}}</td>
         </tr>
       </tbody>
      </table>
