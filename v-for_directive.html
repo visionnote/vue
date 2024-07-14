@@ -8,13 +8,24 @@
 <body>
   
   <div id="app">
-    잔고 : <input type="text" v-model.number="balance">
-    <br><br>
-    회원등급:
-    <span v-if="balance > 1000000">Gold</span>
-    <span v-else-if="balance > 100000">Silver</span>
-    <span v-else-if="balance > 10000">Bronze</span>
-    <span v-else>Basic</span>
+    <div>
+     <table border="1">
+      <thead>
+        <tr>
+          <th>학번</th>
+          <th>이름</th>
+          <th>학과</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1000</td>
+          <td>홍길동</td>
+          <td>철학과</td>
+        </tr>
+      </tbody>
+     </table>
+    </div>
   </div>
 
   <script src="https://unpkg.com/vue"></script>
@@ -27,7 +38,15 @@
             no: 1000, 
             name: "홍길동",
             dept: "철학관"
-          },{},{}]
+          },{
+            no: 2000, 
+            name: "신사임당",
+            dept: "국어국문학과"
+          },{
+            no: 3000, 
+            name: "강감찬",
+            dept: "사학과"
+          }]
         }
       }
     }).mount("#app")
